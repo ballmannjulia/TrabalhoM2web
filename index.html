@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Obras de Museu</title>
+ <style href="style.css"></style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="title">Cadastro de Obras de Museu</div>
+        <div class="subtitle">Trabalho M2 — Técnicas de Programação para Cliente Web (JS & CSS)</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="form-title">
+        <h2 id="form-title">Formulário</h2>
+        <form id="obraForm" novalidate>
+          <div class="row">
+            <div>
+              <label for="nome">Nome da obra (min. 6 | máx. 100)</label>
+              <input id="nome" name="nome" type="text" maxlength="100" placeholder="Ex.: A persistência da memória" />
+            </div>
+            <div>
+              <label for="autor">Autor (min. 10 | máx. 100)</label>
+              <input id="autor" name="autor" type="text" maxlength="100" placeholder="Ex.: Salvador Domingo Felipe Jacinto Dalí" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="ano">Ano da obra (1–9999)</label>
+              <input id="ano" name="ano" type="number" inputmode="numeric" min="1" max="9999" placeholder="Ex.: 1931" />
+            </div>
+            <div>
+              <label for="periodo">Período</label>
+              <select id="periodo" name="periodo">
+                <option value="">Selecione…</option>
+                <option value="d.C.">d.C.</option>
+                <option value="a.C.">a.C.</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="tipo">Tipo</label>
+              <select id="tipo" name="tipo">
+                <option value="">Selecione…</option>
+                <option value="Quadro">Quadro</option>
+                <option value="Escultura">Escultura</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+            <div>
+              <label for="detalhamento">Detalhamento (opcional | máx. 2000)</label>
+              <textarea id="detalhamento" name="detalhamento" maxlength="2000" placeholder="Breve descrição, contexto histórico, técnica utilizada…"></textarea>
+            </div>
+          </div>
+          <div class="actions" style="margin-top:10px">
+            <button type="button" id="btnValidar" class="btn btn-primary">Validar & Registrar</button>
+            <button type="reset" class="btn btn-ghost" id="btnLimpar">Limpar</button>
+          </div>
+          <div id="areaErros" class="errors" role="alert" style="display:none">
+            <h3>Por favor, corrija os seguintes campos:</h3>
+            <ul id="listaErros"></ul>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" aria-labelledby="table-title">
+        <h2 id="table-title">Registros</h2>
+        <div style="overflow:auto; max-height: 520px;">
+          <table id="tabelaObras" aria-describedby="help-click">
+            <thead>
+              <tr>
+                <th>Nome da obra</th>
+                <th>Autor</th>
+                <th>Ano</th>
+                <th>Período</th>
+                <th>Tipo</th>
+                <th class="td-actions">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tBody"></tbody>
+          </table>
+        </div>
+        <p id="help-click" class="subtitle" style="margin-top:8px">Clique em uma linha para visualizar o detalhamento. Use o botão Excluir para remover.</p>
+        <div id="detalhes" class="details" aria-live="polite"></div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
