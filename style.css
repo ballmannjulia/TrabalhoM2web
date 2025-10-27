@@ -41,6 +41,9 @@ body {
   padding-right: 2em;
 }
 
+header {
+  padding-bottom: 10px;
+}
 .wrap {
   max-width: 1100px;
   margin: 32px auto;
@@ -61,7 +64,7 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.2fr 1.8fr;
   gap: 20px;
 }
 
@@ -74,11 +77,65 @@ body {
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease;
-  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 180px);
+  min-height: 500px;
+  max-height: 750px;
+  overflow: hidden;
+}
+
+.card form {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  padding-right: 8px;
+}
+
+.card.registros-card {
+  display: inline-block;
+  flex-direction: column;
+  height: calc(100vh - 180px);
+  min-height: 500px;
+  max-height: 750px;
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+}
+
+.card.registros-card .table-wrapper {
+  flex: 6;
+  overflow-y: auto;
+  overflow-x: auto;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-height: 0;
+  width: 100%; /* garante que a tabela ocupe toda a largura do container */
+}
+
+.card.registros-card table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.card.registros-card .detalhamento-view {
+  flex: 4;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  background: #ffffff;
+  min-height: 0;
+  max-height: none;
 }
 
 .card:hover {
@@ -180,9 +237,13 @@ table {
   background: var(--panel);
   border-radius: 10px;
   overflow: hidden;
+  table-layout: auto;
 }
 
 thead th {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   text-align: left;
   font-size: 1em;
   color: var(--text);
@@ -190,6 +251,19 @@ thead th {
   padding: 20px;
   background-color: var(--table-header-bg);
   border-bottom: 3px solid var(--table-header-border);
+}
+
+thead th:nth-child(1),
+tbody td:nth-child(1) {
+  width: 150px;
+}
+thead th:nth-child(2),
+tbody td:nth-child(2) {
+  width: 100px;
+}
+thead th:nth-child(3),
+tbody td:nth-child(3) {
+  width: 100px;
 }
 
 tbody td {
@@ -200,6 +274,9 @@ tbody td {
   word-wrap: break-word;
   text-align: justify;
   border-bottom: 1px solid var(--table-last-border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 tbody tr:hover {
