@@ -53,8 +53,18 @@ function validarFormulario() {
     // Validação: Ano (obrigatório, número válido)
     if (!ano.value.trim()) {
         erros.push({ campo: ano, mensagem: 'Ano da obra é obrigatório' });
-    } else if (isNaN(ano.value) || parseInt(ano.value) < 1 || parseInt(ano.value) > 9999) {
-        erros.push({ campo: ano, mensagem: 'Ano da obra deve ser um número válido entre 1 e 9999' });
+    } else {
+        const anoValor = ano.value.trim();
+        const anoNumero = parseInt(anoValor);
+
+        // Verifica se é um número válido
+        if (isNaN(anoNumero) || anoNumero < 1 || anoNumero > 9999) {
+            erros.push({ campo: ano, mensagem: 'Ano da obra deve ser um número válido entre 1 e 9999' });
+        }
+        // Verifica se tem zeros à esquerda desnecessários (022, 0022, etc)
+        else if (anoValor !== anoNumero.toString()) {
+            erros.push({ campo: ano, mensagem: 'Ano da obra não deve conter zeros à esquerda' });
+        }
     }
 
     // Validação: Período (obrigatório, valor não vazio)
