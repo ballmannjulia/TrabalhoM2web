@@ -44,6 +44,7 @@ body {
 header {
   padding-bottom: 10px;
 }
+
 .wrap {
   max-width: 1100px;
   margin: 32px auto;
@@ -98,8 +99,9 @@ header {
   padding-right: 8px;
 }
 
+/* ---- CARD REGISTROS (layout) ---- */
 .card.registros-card {
-  display: inline-block;
+  display: flex;
   flex-direction: column;
   height: calc(100vh - 180px);
   min-height: 500px;
@@ -110,24 +112,32 @@ header {
 }
 
 .card.registros-card .table-wrapper {
-  flex: 6;
+  flex: 1 1 auto;
   overflow-y: auto;
-  overflow-x: auto;
+  overflow-x: auto; /* deixa rolar horizontalmente quando precisar */
   margin-bottom: 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
   min-height: 0;
-  width: 100%; /* garante que a tabela ocupe toda a largura do container */
+  width: 100%;
 }
 
 .card.registros-card table {
   width: 100%;
-  table-layout: fixed;
+  table-layout: fixed; /* base */
   border-collapse: collapse;
 }
 
+/* Ajuste para permitir expansão horizontal quando necessário
+   (aplica-se à tabela dentro do wrapper do card de registros) */
+.card.registros-card .table-wrapper table {
+  min-width: 100%;
+  width: max-content; /* não amassa a última coluna; rola se faltar espaço */
+  table-layout: auto; /* cálculo mais natural das colunas */
+}
+
 .card.registros-card .detalhamento-view {
-  flex: 4;
+  flex: 0 0 200px; /* altura fixa; ajuste se quiser */
   overflow-y: auto;
   overflow-x: hidden;
   border: 1px solid var(--border);
@@ -148,6 +158,7 @@ header {
   color: var(--primary);
 }
 
+/* ---- Form controls ---- */
 label {
   display: block;
   font-size: 13px;
@@ -194,16 +205,22 @@ textarea {
 .btn {
   appearance: none;
   border: 1px solid var(--border);
-  padding: 10px 16px;
+  padding: 8px 12px;
   border-radius: 10px;
   background: var(--panel);
-  color: #ffffff;
+  color: inherit;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
 }
 
 .btn:hover {
-  background: #3a475a;
+  background: #475160;
+  color: white;
 }
 
 .btn-primary {
@@ -219,6 +236,7 @@ textarea {
 
 .btn-ghost {
   background: transparent;
+  color: #475160;
 }
 
 .btn-del {
@@ -231,6 +249,7 @@ textarea {
   background: rgba(239, 68, 68, 0.2);
 }
 
+/* ---- Tabela ---- */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -266,17 +285,42 @@ tbody td:nth-child(3) {
   width: 100px;
 }
 
+
 tbody td {
   padding: 20px;
   font-size: 1em;
   color: var(--text);
   vertical-align: top;
-  word-wrap: break-word;
   text-align: justify;
   border-bottom: 1px solid var(--table-last-border);
+  white-space: normal;            /* <<< trocado */
+  overflow: visible;              /* <<< trocado */
+  text-overflow: clip;            /* <<< trocado */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.card.registros-card thead th:last-child,
+.card.registros-card tbody td:last-child {
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
+  width: 1%;
+}
+
+.card.registros-card tbody td:last-child .btn,
+.card.registros-card tbody td:last-child button {
+  display: inline-flex;
+  max-width: none;
+}
+
+.card.registros-card tbody td:last-child .btn-del {
+  padding: 2px 8px;
+  font-size: 0.95rem;
+  line-height: 1;
+  border-radius: 8px;
+  min-width: 0;
 }
 
 tbody tr:hover {
