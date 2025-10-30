@@ -34,7 +34,6 @@ function validarFormulario() {
     const ano = document.getElementById('ano');
     const periodo = document.getElementById('periodo');
     const tipo = document.getElementById('tipo');
-    const detalhamento = document.getElementById('detalhamento');
 
     // Validação: Nome da obra (obrigatório, mínimo 6 caracteres)
     if (!nome.value.trim()) {
@@ -55,15 +54,20 @@ function validarFormulario() {
         erros.push({ campo: ano, mensagem: 'Ano da obra é obrigatório' });
     } else {
         const anoValor = ano.value.trim();
-        const anoNumero = parseInt(anoValor);
 
-        // Verifica se é um número válido
-        if (isNaN(anoNumero) || anoNumero < 1 || anoNumero > 9999) {
-            erros.push({ campo: ano, mensagem: 'Ano da obra deve ser um número válido entre 1 e 9999' });
+        // Verifica se contém apenas dígitos (sem espaços ou letras)
+        if (!/^\d+$/.test(anoValor)) {
+            erros.push({ campo: ano, mensagem: 'Ano da obra deve conter apenas números' });
         }
-        // Verifica se tem zeros à esquerda desnecessários (022, 0022, etc)
-        else if (anoValor !== anoNumero.toString()) {
-            erros.push({ campo: ano, mensagem: 'Ano da obra não deve conter zeros à esquerda' });
+        // Verifica zeros à esquerda (ex: 0123, 0001)
+        else if (/^0\d+/.test(anoValor)) {
+            erros.push({ campo: ano, mensagem: 'Ano da obra não pode começar com zero' });
+        }
+        else {
+            const anoNumero = parseInt(anoValor, 10);
+            if (anoNumero < 1 || anoNumero > 9999) {
+                erros.push({ campo: ano, mensagem: 'Ano da obra deve estar entre 1 e 9999' });
+            }
         }
     }
 
@@ -80,6 +84,7 @@ function validarFormulario() {
     // Se houver erros, exibi-los
     if (erros.length > 0) {
         areaErros.style.display = 'block';
+        erros[0].campo.focus();
 
         erros.forEach(erro => {
             // Adiciona borda vermelha ao campo
@@ -217,6 +222,28 @@ function excluirObra(id) {
         detalhes.innerHTML = '';
         linhaAtualSelecionada = null;
     }
+    // Feedback visual
+    const msg = document.createElement('div');
+    msg.textContent = 'Obra excluída com sucesso!';
+    msg.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--danger);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+  `;
+    document.body.appendChild(msg);
+
+    setTimeout(() => {
+        msg.style.transition = 'opacity 0.3s';
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 300);
+    }, 2000);
 }
 
 // Event Listeners

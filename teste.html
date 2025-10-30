@@ -1,149 +1,179 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Teste da Biblioteca CSS — M2</title>
-  <link rel="stylesheet" href="./style.css"/>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="title">Biblioteca CSS — Teste</div>
-      <div class="subtitle">Validação dos estilos usando apenas o style.css</div>
-    </header>
-
-    <!-- Tipografia básica / parágrafos / links -->
-    <section class="card" aria-labelledby="sec-typography">
-      <h2 id="sec-typography">Tipografia & Texto</h2>
-      <p>Este é um parágrafo de teste para verificar fonte, espaçamento, <strong>negrito</strong>, <em>itálico</em> e
-        <a href="#">links</a>. O line-height padrão e as margens laterais devem seguir o CSS.</p>
-      <ul>
-        <li>Lista não ordenada</li>
-        <li>Com vários itens para checar espaçamentos</li>
-      </ul>
-      <ol>
-        <li>Lista ordenada</li>
-        <li>Para validar estilos globais</li>
-      </ol>
-      <button type="button">Botão padrão</button>
-    </section>
-
-    <!-- Formulários -->
-    <section class="card" aria-labelledby="sec-form">
-      <h2 id="sec-form">Controles de Formulário</h2>
-      <form>
-        <div class="row">
-          <div>
-            <label for="i1">Texto:</label>
-            <input id="i1" type="text" placeholder="Digite algo..."/>
-          </div>
-          <div>
-            <label for="i2">Número:</label>
-            <input id="i2" type="number" placeholder="1234"/>
-          </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste da Biblioteca CSS — M2</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="title">Biblioteca CSS — Teste</div>
+        <div class="subtitle">
+          Validação dos estilos usando apenas o style.css
         </div>
-        <div class="row">
-          <div>
-            <label for="s1">Select:</label>
-            <select id="s1">
-              <option>Opção A</option>
-              <option>Opção B</option>
-              <option>Opção C</option>
-            </select>
+      </header>
+
+      <!-- Tipografia básica / parágrafos / links -->
+      <section class="card" aria-labelledby="sec-typography">
+        <h2 id="sec-typography">Tipografia & Texto</h2>
+        <p>
+          Este é um parágrafo de teste para verificar fonte, espaçamento,
+          <strong>negrito</strong>, <em>itálico</em> e <a href="#">links</a>. O
+          line-height padrão e as margens laterais devem seguir o CSS.
+        </p>
+        <ul>
+          <li>Lista não ordenada</li>
+          <li>Com vários itens para checar espaçamentos</li>
+        </ul>
+        <ol>
+          <li>Lista ordenada</li>
+          <li>Para validar estilos globais</li>
+        </ol>
+        <button type="button">Botão padrão</button>
+      </section>
+
+      <!-- Formulários -->
+      <section class="card" aria-labelledby="sec-form">
+        <h2 id="sec-form">Controles de Formulário</h2>
+        <form>
+          <div class="row">
+            <div>
+              <label for="i1">Texto:</label>
+              <input id="i1" type="text" placeholder="Digite algo..." />
+            </div>
+            <div>
+              <label for="i2">Número:</label>
+              <input id="i2" type="number" placeholder="1234" />
+            </div>
           </div>
-          <div>
-            <label for="t1">Textarea:</label>
-            <textarea id="t1" rows="4" placeholder="Texto longo para observar line-height e alinhamento."></textarea>
+          <div class="row">
+            <div>
+              <label for="s1">Select:</label>
+              <select id="s1">
+                <option>Opção A</option>
+                <option>Opção B</option>
+                <option>Opção C</option>
+              </select>
+            </div>
+            <div>
+              <label for="t1">Textarea:</label>
+              <textarea
+                id="t1"
+                rows="4"
+                placeholder="Texto longo para observar line-height e alinhamento."
+              ></textarea>
+            </div>
           </div>
+        </form>
+      </section>
+
+      <!-- Tabela -->
+      <section class="card" aria-labelledby="sec-table">
+        <h2 id="sec-table">Tabela</h2>
+        <div class="table-wrapper">
+          <table aria-label="Demonstração de estilos de tabela">
+            <thead>
+              <tr>
+                <th>Coluna 1</th>
+                <th>Coluna 2</th>
+                <th>Coluna 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr tabindex="0">
+                <td>
+                  Conteúdo com texto bem longo para verificar a quebra de
+                  palavras e linhas, mantendo o alinhamento justificado.
+                </td>
+                <td>
+                  Outro texto longo para validar overflow-wrap/word-break e o
+                  padding interno das células.
+                </td>
+                <td>
+                  Mais um bloco de conteúdo para observar a altura de linha e o
+                  comportamento no hover/foco.
+                </td>
+              </tr>
+              <tr tabindex="0">
+                <td>
+                  Segunda linha (hover muda cor; focus-within realça seleção)
+                </td>
+                <td>Teste de acessibilidade visual</td>
+                <td>Sem borda inferior aqui</td>
+              </tr>
+              <tr tabindex="0">
+                <td>
+                  Última linha: deve ter borda inferior aplicada apenas aqui
+                </td>
+                <td>Requisito do enunciado</td>
+                <td>OK</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </form>
-    </section>
+      </section>
 
-    <!-- Tabela -->
-    <section class="card" aria-labelledby="sec-table">
-      <h2 id="sec-table">Tabela</h2>
-      <div class="table-wrapper">
-        <table aria-label="Demonstração de estilos de tabela">
-          <thead>
-            <tr>
-              <th>Coluna 1</th>
-              <th>Coluna 2</th>
-              <th>Coluna 3</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr tabindex="0">
-              <td>Conteúdo com texto bem longo para verificar a quebra de palavras e linhas, mantendo o alinhamento justificado.</td>
-              <td>Outro texto longo para validar overflow-wrap/word-break e o padding interno das células.</td>
-              <td>Mais um bloco de conteúdo para observar a altura de linha e o comportamento no hover/foco.</td>
-            </tr>
-            <tr tabindex="0">
-              <td>Segunda linha (hover muda cor; focus-within realça seleção)</td>
-              <td>Teste de acessibilidade visual</td>
-              <td>Sem borda inferior aqui</td>
-            </tr>
-            <tr tabindex="0">
-              <td>Última linha: deve ter borda inferior aplicada apenas aqui</td>
-              <td>Requisito do enunciado</td>
-              <td>OK</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <!-- Card Registros: tabela rolando e detalhamento fixo no rodapé do card -->
+      <section class="card registros-card" aria-labelledby="sec-registros">
+        <h2 id="sec-registros">Registros</h2>
 
-    <!-- Card Registros: tabela rolando e detalhamento fixo no rodapé do card -->
-    <section class="card registros-card" aria-labelledby="sec-registros">
-      <h2 id="sec-registros">Registros</h2>
+        <div class="table-wrapper">
+          <table aria-label="Registros">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr tabindex="0">
+                <td>001</td>
+                <td>
+                  Item com descrição longa para validar quebras de linha e de
+                  palavra dentro da célula, sem cortar.
+                </td>
+                <td>Ativo</td>
+              </tr>
+              <tr tabindex="0">
+                <td>002</td>
+                <td>Outro item de teste</td>
+                <td>Pendente</td>
+              </tr>
+              <tr tabindex="0">
+                <td>003</td>
+                <td>Mais um registro para exercício de rolagem</td>
+                <td>Ativo</td>
+              </tr>
+              <tr tabindex="0">
+                <td>004</td>
+                <td>
+                  Conteúdo extra para garantir a rolagem na área da tabela
+                </td>
+                <td>Inativo</td>
+              </tr>
+              <tr tabindex="0">
+                <td>005</td>
+                <td>Última linha (borda inferior somente aqui)</td>
+                <td>OK</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <div class="table-wrapper">
-        <table aria-label="Registros">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Descrição</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr tabindex="0">
-              <td>001</td>
-              <td>Item com descrição longa para validar quebras de linha e de palavra dentro da célula, sem cortar.</td>
-              <td>Ativo</td>
-            </tr>
-            <tr tabindex="0">
-              <td>002</td>
-              <td>Outro item de teste</td>
-              <td>Pendente</td>
-            </tr>
-            <tr tabindex="0">
-              <td>003</td>
-              <td>Mais um registro para exercício de rolagem</td>
-              <td>Ativo</td>
-            </tr>
-            <tr tabindex="0">
-              <td>004</td>
-              <td>Conteúdo extra para garantir a rolagem na área da tabela</td>
-              <td>Inativo</td>
-            </tr>
-            <tr tabindex="0">
-              <td>005</td>
-              <td>Última linha (borda inferior somente aqui)</td>
-              <td>OK</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="detalhamento-view">
+          <h3>Detalhamento</h3>
+          <p>
+            Esta área permanece visível no rodapé do card, enquanto a tabela
+            acima rola.
+          </p>
+          <p>Use-a para exibir informações do item selecionado.</p>
+        </div>
+      </section>
 
-      <div class="detalhamento-view">
-        <h3>Detalhamento</h3>
-        <p>Esta área permanece visível no rodapé do card, enquanto a tabela acima rola.</p>
-        <p>Use-a para exibir informações do item selecionado.</p>
-      </div>
-    </section>
-
-    <footer>Fim dos testes.</footer>
-  </div>
-</body>
+      <footer>Fim dos testes.</footer>
+    </div>
+  </body>
 </html>
